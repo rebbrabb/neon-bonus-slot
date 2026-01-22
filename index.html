@@ -1,0 +1,409 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+
+<title>Neon Bonus Slot</title>
+<meta name="description" content="Neon Bonus Slot is a free-to-play fruit slot game for entertainment only. No real money, no in-app purchases. 18+." />
+
+<meta property="og:title" content="Neon Bonus Slot" />
+<meta property="og:description" content="Free-to-play fruit slot game. No real money. No in-app purchases. 18+." />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="https://rebbrabb.github.io/neon-bonus-slot/assets/og.jpg" />
+
+<link rel="icon" href="assets/icon.png" />
+
+<style>
+  :root{
+    --bg0:#070012;
+    --bg1:#0a1b3d;
+    --bg2:#1b0033;
+    --text:rgba(255,255,255,.92);
+    --muted:rgba(255,255,255,.72);
+    --muted2:rgba(255,255,255,.58);
+    --card:rgba(255,255,255,.07);
+    --stroke:rgba(255,255,255,.12);
+    --shadow:0 30px 90px rgba(0,0,0,.55);
+    --radius:20px;
+    --lime:#b6ff2a;
+    --cyan:#48d7ff;
+    --pink:#ff4fd8;
+    --yellow:#ffd000;
+  }
+
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;
+    font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    color:var(--text);
+    background:
+      radial-gradient(1100px 700px at 12% -10%, rgba(255,79,216,.18), transparent 60%),
+      radial-gradient(900px 700px at 88% 10%, rgba(72,215,255,.14), transparent 60%),
+      radial-gradient(900px 700px at 50% 115%, rgba(182,255,42,.12), transparent 62%),
+      linear-gradient(180deg, var(--bg0), var(--bg1) 55%, var(--bg2));
+    overflow-x:hidden;
+  }
+
+  /* fruit pattern layer */
+  .bgPattern{
+    position:fixed;
+    inset:0;
+    background: url("assets/bg-fruits.png") center/520px repeat;
+    opacity:.18;
+    filter: blur(.2px) saturate(1.1);
+    transform: translate3d(0,0,0);
+    pointer-events:none;
+  }
+  /* dark overlay for readability */
+  .bgOverlay{
+    position:fixed;
+    inset:0;
+    background: radial-gradient(900px 520px at 50% 0%, rgba(255,255,255,.10), transparent 60%);
+    opacity:.55;
+    pointer-events:none;
+  }
+
+  a{color:rgba(255,255,255,.92);text-decoration:none}
+  a:hover{text-decoration:underline}
+
+  .wrap{max-width:1120px;margin:0 auto;padding:38px 18px 90px;position:relative}
+
+  .nav{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:14px;
+    padding:12px 14px;
+    border:1px solid rgba(255,255,255,.10);
+    border-radius:16px;
+    background: rgba(0,0,0,.18);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+  .brand{
+    display:flex;align-items:center;gap:10px;min-width:200px;
+  }
+  .brand img{
+    width:40px;height:40px;border-radius:12px;
+    border:1px solid rgba(255,255,255,.16);
+    box-shadow:0 10px 30px rgba(0,0,0,.35);
+  }
+  .brand strong{display:block;font-size:14px;letter-spacing:.2px}
+  .brand span{display:block;font-size:12px;color:var(--muted2)}
+  .navLinks{display:flex;flex-wrap:wrap;gap:12px;justify-content:flex-end}
+  .navLinks a{
+    font-size:13px;
+    color:rgba(255,255,255,.82);
+    padding:8px 10px;border-radius:12px;
+    border:1px solid transparent;
+  }
+  .navLinks a:hover{border-color:rgba(255,255,255,.14);background:rgba(255,255,255,.05);text-decoration:none}
+
+  .hero{
+    margin-top:18px;
+    padding:28px 22px;
+    border-radius:var(--radius);
+    background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.05));
+    border:1px solid rgba(255,255,255,.12);
+    box-shadow:var(--shadow);
+    position:relative;
+    overflow:hidden;
+  }
+  .hero:before{
+    content:"";
+    position:absolute;inset:-40%;
+    background:
+      radial-gradient(560px 320px at 30% 25%, rgba(255,79,216,.18), transparent 60%),
+      radial-gradient(560px 320px at 70% 35%, rgba(72,215,255,.14), transparent 60%),
+      radial-gradient(560px 320px at 55% 80%, rgba(182,255,42,.12), transparent 60%);
+    transform:rotate(10deg);
+    opacity:.9;
+    pointer-events:none;
+  }
+  .heroIn{position:relative}
+
+  .heroGrid{
+    display:grid;
+    grid-template-columns: 1.1fr .9fr;
+    gap:22px;
+    align-items:center;
+  }
+  h1{
+    margin:0 0 10px;
+    font-size:54px;
+    line-height:1.02;
+    letter-spacing:.4px;
+  }
+  .lead{
+    margin:0 0 14px;
+    color:var(--muted);
+    font-size:16.5px;
+    line-height:1.7;
+    max-width:65ch;
+  }
+
+  .badges{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+  .badge{
+    padding:9px 12px;border-radius:999px;
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.12);
+    color:rgba(255,255,255,.86);
+    font-size:13px;
+    white-space:nowrap;
+  }
+  .badgeStrong{
+    background:
+      radial-gradient(18px 18px at 25% 25%, rgba(255,255,255,.22), transparent 60%),
+      linear-gradient(135deg, rgba(182,255,42,.18), rgba(72,215,255,.12), rgba(255,79,216,.10));
+    border-color: rgba(255,255,255,.18);
+  }
+
+  .trust{
+    margin-top:16px;
+    display:grid;
+    grid-template-columns: repeat(3, minmax(0,1fr));
+    gap:10px;
+  }
+  .trust .t{
+    padding:12px 12px;
+    border-radius:16px;
+    background:rgba(0,0,0,.20);
+    border:1px solid rgba(255,255,255,.10);
+  }
+  .t b{display:block;font-size:13px;margin-bottom:6px}
+  .t span{color:var(--muted2);font-size:12.5px;line-height:1.45}
+
+  .shots{
+    display:grid;
+    grid-template-columns:repeat(4, minmax(0,1fr));
+    gap:12px;
+  }
+  .shot{
+    border-radius:18px;
+    overflow:hidden;
+    border:1px solid rgba(255,255,255,.12);
+    background:rgba(0,0,0,.18);
+    box-shadow:0 18px 50px rgba(0,0,0,.45);
+  }
+  .shot img{display:block;width:100%;height:auto}
+
+  .section{
+    margin-top:16px;
+    padding:22px 22px;
+    border-radius:var(--radius);
+    background:rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.12);
+    box-shadow:0 18px 60px rgba(0,0,0,.28);
+  }
+  .section h2{
+    margin:0 0 10px;
+    font-size:18px;
+    letter-spacing:.2px;
+  }
+  .section p{margin:10px 0;color:rgba(255,255,255,.78);line-height:1.7}
+  .cols{
+    display:grid;
+    grid-template-columns:repeat(3, minmax(0,1fr));
+    gap:12px;
+    margin-top:10px;
+  }
+  .mini{
+    border-radius:16px;
+    padding:14px;
+    background:rgba(0,0,0,.18);
+    border:1px solid rgba(255,255,255,.10);
+  }
+  .mini b{display:block;font-size:13px;margin-bottom:8px}
+  .mini span{display:block;color:var(--muted2);font-size:13px;line-height:1.45}
+
+  .list{margin:10px 0 0 18px;color:rgba(255,255,255,.78);line-height:1.8}
+  .list li{margin:6px 0}
+
+  .footer{
+    margin-top:16px;
+    padding:18px 22px;
+    border-radius:var(--radius);
+    background:rgba(0,0,0,.22);
+    border:1px solid rgba(255,255,255,.10);
+    color:rgba(255,255,255,.68);
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+    font-size:13px;
+  }
+  .footer a{color:rgba(255,255,255,.84)}
+
+  /* reveal on scroll */
+  .reveal{
+    opacity:0;
+    transform: translateY(14px);
+    transition: opacity .6s ease, transform .6s ease;
+  }
+  .reveal.show{
+    opacity:1;
+    transform: translateY(0);
+  }
+
+  @media (max-width:980px){
+    h1{font-size:44px}
+    .heroGrid{grid-template-columns:1fr}
+    .shots{grid-template-columns:repeat(2, minmax(0,1fr))}
+    .cols{grid-template-columns:1fr}
+    .trust{grid-template-columns:1fr}
+  }
+</style>
+</head>
+
+<body>
+  <div class="bgPattern" id="bgPattern" aria-hidden="true"></div>
+  <div class="bgOverlay" aria-hidden="true"></div>
+
+  <div class="wrap">
+    <div class="nav">
+      <div class="brand">
+        <img src="assets/icon.png" alt="Neon Bonus Slot icon" />
+        <div>
+          <strong>Neon Bonus Slot</strong>
+          <span>Marketing page</span>
+        </div>
+      </div>
+
+      <div class="navLinks">
+        <a href="#screens">Screens</a>
+        <a href="#features">Features</a>
+        <a href="#fair">Responsible</a>
+        <a href="#support">Support</a>
+        <a href="privacy.html">Privacy</a>
+      </div>
+    </div>
+
+    <section class="hero reveal">
+      <div class="heroIn">
+        <div class="heroGrid">
+          <div>
+            <h1>Neon Bonus Slot</h1>
+            <p class="lead">
+              A colorful fruit slot experience built for entertainment.
+              Fast spins, bright visuals, satisfying win animations, and a simple one-screen flow.
+            </p>
+
+            <div class="badges">
+              <span class="badge badgeStrong">Free to play</span>
+              <span class="badge">No real money</span>
+              <span class="badge">No in-app purchases</span>
+              <span class="badge badgeStrong">18+ only</span>
+            </div>
+
+            <div class="trust">
+              <div class="t">
+                <b>Clear for review</b>
+                <span>Support email and Privacy Policy are public and easy to find.</span>
+              </div>
+              <div class="t">
+                <b>No payments</b>
+                <span>No subscriptions, no top-ups, no paid advantages.</span>
+              </div>
+              <div class="t">
+                <b>Entertainment only</b>
+                <span>Virtual outcomes only. No cash-out. No real-world value.</span>
+              </div>
+            </div>
+          </div>
+
+          <div id="screens" class="shots">
+            <div class="shot"><img src="assets/screen1.png" alt="Gameplay screenshot 1" /></div>
+            <div class="shot"><img src="assets/screen2.png" alt="Gameplay screenshot 2" /></div>
+            <div class="shot"><img src="assets/screen3.png" alt="Gameplay screenshot 3" /></div>
+            <div class="shot"><img src="assets/screen4.png" alt="Gameplay screenshot 4" /></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="features" class="section reveal">
+      <h2>Free features</h2>
+      <div class="cols">
+        <div class="mini">
+          <b>Fruit reels and neon style</b>
+          <span>Bright symbols, clean contrast, and fast readability in portrait mode.</span>
+        </div>
+        <div class="mini">
+          <b>Win animations</b>
+          <span>Big win screens, spark effects, and satisfying transitions.</span>
+        </div>
+        <div class="mini">
+          <b>Simple single-slot flow</b>
+          <span>One main screen, no complex menus, quick sessions.</span>
+        </div>
+        <div class="mini">
+          <b>Sound and vibration toggles</b>
+          <span>Optional SFX and haptics for a more tactile arcade feel.</span>
+        </div>
+        <div class="mini">
+          <b>Offline friendly</b>
+          <span>Designed to be playable without purchases and without accounts.</span>
+        </div>
+        <div class="mini">
+          <b>No tracking</b>
+          <span>No third-party analytics or ad tracking required to play.</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="fair" class="section reveal">
+      <h2>Responsible play and disclosures</h2>
+      <p>
+        Neon Bonus Slot is intended for users aged 18 and older. The game does not offer real-money gambling and does not provide any
+        opportunity to win real money or items of real-world value. Any coins, points, or bonuses are virtual and for entertainment only.
+      </p>
+      <ul class="list">
+        <li>No in-app purchases, no subscriptions, no top-ups</li>
+        <li>No cash-out, no payouts, no real-world prizes</li>
+        <li>Success in the game does not imply future success at real-money gambling</li>
+      </ul>
+    </section>
+
+    <section class="section reveal">
+      <h2>FAQ</h2>
+      <p><b>Is this a real-money casino?</b><br><span style="color:rgba(255,255,255,.78)">No. This is a free entertainment game with virtual outcomes only.</span></p>
+      <p><b>Are there purchases or paid advantages?</b><br><span style="color:rgba(255,255,255,.78)">No. The game contains no in-app purchases and no paid progression.</span></p>
+      <p><b>Who is this for?</b><br><span style="color:rgba(255,255,255,.78)">Adults 18+. If you feel the game is not for you, stop at any time.</span></p>
+    </section>
+
+    <section id="support" class="footer reveal">
+      <div>
+        Support email:
+        <a href="mailto:assistente@lidermaterialdeconstrucaoltda.info">assistente@lidermaterialdeconstrucaoltda.info</a>
+      </div>
+      <div>
+        <a href="privacy.html">Privacy Policy</a>
+        <span style="opacity:.7"> • </span>
+        <span>© <span id="y"></span> Neon Bonus Slot</span>
+      </div>
+    </section>
+  </div>
+
+<script>
+  // year
+  document.getElementById("y").textContent = new Date().getFullYear();
+
+  // reveal
+  const els = document.querySelectorAll(".reveal");
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add("show"); });
+  }, {threshold: 0.12});
+  els.forEach(el=>io.observe(el));
+
+  // light parallax for fruit pattern
+  const bg = document.getElementById("bgPattern");
+  window.addEventListener("scroll", ()=>{
+    const y = window.scrollY * 0.12;
+    bg.style.transform = `translate3d(0, ${y}px, 0)`;
+  }, {passive:true});
+</script>
+</body>
+</html>
