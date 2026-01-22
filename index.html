@@ -1,409 +1,549 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Neon Bonus Slot — Marketing Page</title>
+  <meta name="description" content="Neon Bonus Slot is a free-to-play slot-style entertainment game (18+). No real-money gambling. No in-app purchases. No tracking." />
 
-<title>Neon Bonus Slot</title>
-<meta name="description" content="Neon Bonus Slot is a free-to-play fruit slot game for entertainment only. No real money, no in-app purchases. 18+." />
+  <!-- Open Graph -->
+  <meta property="og:title" content="Neon Bonus Slot" />
+  <meta property="og:description" content="Free-to-play slot-style entertainment game (18+). No real-money gambling. No in-app purchases. No tracking." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://rebbrabb.github.io/neon-bonus-slot/" />
+  <meta property="og:image" content="https://rebbrabb.github.io/neon-bonus-slot/og.png" />
 
-<meta property="og:title" content="Neon Bonus Slot" />
-<meta property="og:description" content="Free-to-play fruit slot game. No real money. No in-app purchases. 18+." />
-<meta property="og:type" content="website" />
-<meta property="og:image" content="https://rebbrabb.github.io/neon-bonus-slot/assets/og.jpg" />
+  <link rel="icon" href="icon.png" />
 
-<link rel="icon" href="assets/icon.png" />
+  <style>
+    :root{
+      --bg0:#070A18;
+      --bg1:#0A1230;
+      --card: rgba(255,255,255,.07);
+      --stroke: rgba(255,255,255,.14);
+      --text: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.72);
+      --muted2: rgba(255,255,255,.58);
 
-<style>
-  :root{
-    --bg0:#070012;
-    --bg1:#0a1b3d;
-    --bg2:#1b0033;
-    --text:rgba(255,255,255,.92);
-    --muted:rgba(255,255,255,.72);
-    --muted2:rgba(255,255,255,.58);
-    --card:rgba(255,255,255,.07);
-    --stroke:rgba(255,255,255,.12);
-    --shadow:0 30px 90px rgba(0,0,0,.55);
-    --radius:20px;
-    --lime:#b6ff2a;
-    --cyan:#48d7ff;
-    --pink:#ff4fd8;
-    --yellow:#ffd000;
-  }
+      --cyan:#32D6FF;
+      --magenta:#FF4BD8;
+      --violet:#7B5CFF;
+      --lime:#6CFF7A;
+      --yellow:#FFD84A;
 
-  *{box-sizing:border-box}
-  html,body{height:100%}
-  body{
-    margin:0;
-    font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-    color:var(--text);
-    background:
-      radial-gradient(1100px 700px at 12% -10%, rgba(255,79,216,.18), transparent 60%),
-      radial-gradient(900px 700px at 88% 10%, rgba(72,215,255,.14), transparent 60%),
-      radial-gradient(900px 700px at 50% 115%, rgba(182,255,42,.12), transparent 62%),
-      linear-gradient(180deg, var(--bg0), var(--bg1) 55%, var(--bg2));
-    overflow-x:hidden;
-  }
+      --shadow: 0 20px 80px rgba(0,0,0,.55);
+      --radius: 18px;
+      --max: 1120px;
+    }
 
-  /* fruit pattern layer */
-  .bgPattern{
-    position:fixed;
-    inset:0;
-    background: url("assets/bg-fruits.png") center/520px repeat;
-    opacity:.18;
-    filter: blur(.2px) saturate(1.1);
-    transform: translate3d(0,0,0);
-    pointer-events:none;
-  }
-  /* dark overlay for readability */
-  .bgOverlay{
-    position:fixed;
-    inset:0;
-    background: radial-gradient(900px 520px at 50% 0%, rgba(255,255,255,.10), transparent 60%);
-    opacity:.55;
-    pointer-events:none;
-  }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(1100px 700px at 20% 5%, rgba(255,75,216,.20), transparent 60%),
+        radial-gradient(900px 650px at 85% 15%, rgba(50,214,255,.16), transparent 60%),
+        radial-gradient(900px 650px at 70% 120%, rgba(123,92,255,.18), transparent 55%),
+        linear-gradient(180deg, var(--bg0), var(--bg1));
+      overflow-x:hidden;
+    }
 
-  a{color:rgba(255,255,255,.92);text-decoration:none}
-  a:hover{text-decoration:underline}
+    a{color:rgba(255,255,255,.92);text-decoration:none}
+    a:hover{text-decoration:underline}
 
-  .wrap{max-width:1120px;margin:0 auto;padding:38px 18px 90px;position:relative}
+    .wrap{max-width:var(--max);margin:0 auto;padding:38px 18px 70px}
 
-  .nav{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:14px;
-    padding:12px 14px;
-    border:1px solid rgba(255,255,255,.10);
-    border-radius:16px;
-    background: rgba(0,0,0,.18);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-  }
-  .brand{
-    display:flex;align-items:center;gap:10px;min-width:200px;
-  }
-  .brand img{
-    width:40px;height:40px;border-radius:12px;
-    border:1px solid rgba(255,255,255,.16);
-    box-shadow:0 10px 30px rgba(0,0,0,.35);
-  }
-  .brand strong{display:block;font-size:14px;letter-spacing:.2px}
-  .brand span{display:block;font-size:12px;color:var(--muted2)}
-  .navLinks{display:flex;flex-wrap:wrap;gap:12px;justify-content:flex-end}
-  .navLinks a{
-    font-size:13px;
-    color:rgba(255,255,255,.82);
-    padding:8px 10px;border-radius:12px;
-    border:1px solid transparent;
-  }
-  .navLinks a:hover{border-color:rgba(255,255,255,.14);background:rgba(255,255,255,.05);text-decoration:none}
+    /* top */
+    .topbar{
+      display:flex;align-items:center;justify-content:space-between;gap:14px;
+      margin-bottom:18px;
+    }
+    .brand{
+      display:flex;align-items:center;gap:12px;min-width:240px;
+    }
+    .logo{
+      width:44px;height:44px;border-radius:14px;
+      background:
+        radial-gradient(16px 16px at 30% 28%, rgba(255,255,255,.72), transparent 60%),
+        linear-gradient(135deg, rgba(50,214,255,.95), rgba(255,75,216,.92), rgba(123,92,255,.92));
+      border:1px solid rgba(255,255,255,.20);
+      box-shadow:0 12px 30px rgba(0,0,0,.35);
+      overflow:hidden;
+      position:relative;
+    }
+    .logo::after{
+      content:"";
+      position:absolute;inset:-30%;
+      background:linear-gradient(90deg, transparent, rgba(255,255,255,.28), transparent);
+      transform:rotate(20deg);
+      animation:shine 4.8s linear infinite;
+      opacity:.75;
+    }
+    @keyframes shine{
+      0%{transform:translateX(-45%) rotate(20deg)}
+      100%{transform:translateX(45%) rotate(20deg)}
+    }
+    .brand h1{margin:0;font-size:16px;letter-spacing:.2px}
+    .brand p{margin:0;font-size:12px;color:var(--muted2)}
 
-  .hero{
-    margin-top:18px;
-    padding:28px 22px;
-    border-radius:var(--radius);
-    background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.05));
-    border:1px solid rgba(255,255,255,.12);
-    box-shadow:var(--shadow);
-    position:relative;
-    overflow:hidden;
-  }
-  .hero:before{
-    content:"";
-    position:absolute;inset:-40%;
-    background:
-      radial-gradient(560px 320px at 30% 25%, rgba(255,79,216,.18), transparent 60%),
-      radial-gradient(560px 320px at 70% 35%, rgba(72,215,255,.14), transparent 60%),
-      radial-gradient(560px 320px at 55% 80%, rgba(182,255,42,.12), transparent 60%);
-    transform:rotate(10deg);
-    opacity:.9;
-    pointer-events:none;
-  }
-  .heroIn{position:relative}
+    .nav{
+      display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:flex-end;
+    }
+    .nav a{
+      padding:8px 12px;border-radius:999px;
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.12);
+      font-size:13px;color:rgba(255,255,255,.86);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
 
-  .heroGrid{
-    display:grid;
-    grid-template-columns: 1.1fr .9fr;
-    gap:22px;
-    align-items:center;
-  }
-  h1{
-    margin:0 0 10px;
-    font-size:54px;
-    line-height:1.02;
-    letter-spacing:.4px;
-  }
-  .lead{
-    margin:0 0 14px;
-    color:var(--muted);
-    font-size:16.5px;
-    line-height:1.7;
-    max-width:65ch;
-  }
+    /* hero card */
+    .card{
+      background:var(--card);
+      border:1px solid var(--stroke);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+    .hero{
+      padding:22px;
+      display:grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap:18px;
+      align-items:center;
+    }
+    .headline{
+      margin:0 0 10px;
+      font-size:46px;
+      letter-spacing:.2px;
+      line-height:1.05;
+    }
+    .sub{
+      margin:0 0 14px;
+      color:var(--muted);
+      font-size:16px;
+      line-height:1.6;
+      max-width:62ch;
+    }
 
-  .badges{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
-  .badge{
-    padding:9px 12px;border-radius:999px;
-    background:rgba(255,255,255,.08);
-    border:1px solid rgba(255,255,255,.12);
-    color:rgba(255,255,255,.86);
-    font-size:13px;
-    white-space:nowrap;
-  }
-  .badgeStrong{
-    background:
-      radial-gradient(18px 18px at 25% 25%, rgba(255,255,255,.22), transparent 60%),
-      linear-gradient(135deg, rgba(182,255,42,.18), rgba(72,215,255,.12), rgba(255,79,216,.10));
-    border-color: rgba(255,255,255,.18);
-  }
+    .pillRow{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+    .pill{
+      padding:8px 12px;border-radius:999px;
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.12);
+      color:rgba(255,255,255,.86);
+      font-size:13px;
+    }
 
-  .trust{
-    margin-top:16px;
-    display:grid;
-    grid-template-columns: repeat(3, minmax(0,1fr));
-    gap:10px;
-  }
-  .trust .t{
-    padding:12px 12px;
-    border-radius:16px;
-    background:rgba(0,0,0,.20);
-    border:1px solid rgba(255,255,255,.10);
-  }
-  .t b{display:block;font-size:13px;margin-bottom:6px}
-  .t span{color:var(--muted2);font-size:12.5px;line-height:1.45}
+    .ctaRow{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:12px}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;
+      padding:11px 14px;border-radius:14px;
+      background:rgba(255,255,255,.10);
+      border:1px solid rgba(255,255,255,.16);
+      color:rgba(255,255,255,.92);
+      font-weight:700;font-size:14px;
+      box-shadow:0 10px 30px rgba(0,0,0,.25);
+      transition: transform .18s ease, filter .18s ease, background .18s ease, border-color .18s ease;
+      user-select:none;
+    }
+    .btn:hover{transform:translateY(-1px);background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.22)}
+    .btnPrimary{
+      background:
+        radial-gradient(14px 14px at 25% 30%, rgba(255,255,255,.55), transparent 60%),
+        linear-gradient(135deg, rgba(50,214,255,.92), rgba(255,75,216,.92), rgba(123,92,255,.92));
+      color:#0b0c18;
+      border-color:rgba(255,255,255,.22);
+    }
+    .btnPrimary:hover{filter:saturate(1.06)}
 
-  .shots{
-    display:grid;
-    grid-template-columns:repeat(4, minmax(0,1fr));
-    gap:12px;
-  }
-  .shot{
-    border-radius:18px;
-    overflow:hidden;
-    border:1px solid rgba(255,255,255,.12);
-    background:rgba(0,0,0,.18);
-    box-shadow:0 18px 50px rgba(0,0,0,.45);
-  }
-  .shot img{display:block;width:100%;height:auto}
+    .divider{height:1px;background:rgba(255,255,255,.10);margin:18px 0}
 
-  .section{
-    margin-top:16px;
-    padding:22px 22px;
-    border-radius:var(--radius);
-    background:rgba(255,255,255,.06);
-    border:1px solid rgba(255,255,255,.12);
-    box-shadow:0 18px 60px rgba(0,0,0,.28);
-  }
-  .section h2{
-    margin:0 0 10px;
-    font-size:18px;
-    letter-spacing:.2px;
-  }
-  .section p{margin:10px 0;color:rgba(255,255,255,.78);line-height:1.7}
-  .cols{
-    display:grid;
-    grid-template-columns:repeat(3, minmax(0,1fr));
-    gap:12px;
-    margin-top:10px;
-  }
-  .mini{
-    border-radius:16px;
-    padding:14px;
-    background:rgba(0,0,0,.18);
-    border:1px solid rgba(255,255,255,.10);
-  }
-  .mini b{display:block;font-size:13px;margin-bottom:8px}
-  .mini span{display:block;color:var(--muted2);font-size:13px;line-height:1.45}
+    /* right hero: mockup + fruit neon background */
+    .heroRight{
+      position:relative;
+      border-radius:18px;
+      border:1px solid rgba(255,255,255,.10);
+      background:
+        radial-gradient(260px 200px at 20% 10%, rgba(255,75,216,.18), transparent 60%),
+        radial-gradient(260px 220px at 80% 25%, rgba(50,214,255,.14), transparent 60%),
+        radial-gradient(240px 240px at 60% 90%, rgba(123,92,255,.18), transparent 60%),
+        linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      overflow:hidden;
+      min-height:420px;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.08);
+    }
 
-  .list{margin:10px 0 0 18px;color:rgba(255,255,255,.78);line-height:1.8}
-  .list li{margin:6px 0}
+    /* fruit stickers (pure CSS) */
+    .fruit{
+      position:absolute;
+      width:120px;height:120px;border-radius:999px;
+      filter: drop-shadow(0 16px 30px rgba(0,0,0,.35));
+      opacity:.95;
+      transform: rotate(-10deg);
+      border:2px solid rgba(255,255,255,.18);
+      box-shadow: inset 0 0 0 6px rgba(0,0,0,.08);
+    }
+    .fruit::after{
+      content:"";
+      position:absolute;inset:10px;
+      border-radius:999px;
+      background: radial-gradient(20px 20px at 30% 28%, rgba(255,255,255,.55), transparent 60%);
+      opacity:.85;
+    }
+    .fruit.watermelon{left:-24px;top:26px;background:linear-gradient(135deg, rgba(108,255,122,.95), rgba(50,214,255,.65))}
+    .fruit.grape{right:-26px;top:70px;background:linear-gradient(135deg, rgba(123,92,255,.95), rgba(255,75,216,.75))}
+    .fruit.lemon{right:10px;bottom:-40px;background:linear-gradient(135deg, rgba(255,216,74,.96), rgba(255,75,216,.55))}
+    .fruit.cherry{left:30px;bottom:-44px;background:linear-gradient(135deg, rgba(255,75,216,.95), rgba(255,216,74,.55))}
 
-  .footer{
-    margin-top:16px;
-    padding:18px 22px;
-    border-radius:var(--radius);
-    background:rgba(0,0,0,.22);
-    border:1px solid rgba(255,255,255,.10);
-    color:rgba(255,255,255,.68);
-    display:flex;
-    flex-wrap:wrap;
-    align-items:center;
-    justify-content:space-between;
-    gap:10px;
-    font-size:13px;
-  }
-  .footer a{color:rgba(255,255,255,.84)}
+    /* phone mockup */
+    .phoneWrap{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:18px}
+    .phone{
+      width:340px;
+      aspect-ratio: 9 / 19.5;
+      border-radius:42px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.03));
+      border:1px solid rgba(255,255,255,.22);
+      box-shadow: 0 26px 110px rgba(0,0,0,.60);
+      position:relative;
+      overflow:hidden;
+    }
+    .phone:before{
+      content:"";
+      position:absolute;inset:0;
+      background:
+        radial-gradient(700px 360px at 15% -10%, rgba(255,255,255,.20), transparent 55%),
+        radial-gradient(700px 360px at 90% 25%, rgba(255,255,255,.12), transparent 55%);
+      pointer-events:none;
+    }
+    .island{
+      position:absolute;top:16px;left:50%;
+      transform:translateX(-50%);
+      width:130px;height:26px;border-radius:999px;
+      background:rgba(0,0,0,.55);
+      border:1px solid rgba(255,255,255,.10);
+    }
+    .screen{
+      position:absolute;inset:14px;
+      border-radius:34px;
+      background:
+        radial-gradient(420px 300px at 20% 0%, rgba(255,75,216,.14), transparent 60%),
+        radial-gradient(420px 340px at 90% 40%, rgba(50,214,255,.14), transparent 60%),
+        linear-gradient(180deg, rgba(7,10,24,.92), rgba(10,18,48,.92));
+      border:1px solid rgba(255,255,255,.10);
+      overflow:hidden;
+    }
+    .screenInner{
+      height:100%;
+      padding:46px 18px 18px;
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+    }
+    .screenHeader{display:flex;align-items:center;justify-content:space-between;font-size:12px;color:rgba(255,255,255,.82)}
+    .titleInPhone{text-align:center;margin:8px 0 0;font-size:16px;letter-spacing:.2px}
+    .iconBadge{
+      margin:10px auto 6px;
+      width:96px;height:96px;border-radius:26px;
+      background:rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.14);
+      display:grid;place-items:center;
+      box-shadow:0 16px 60px rgba(0,0,0,.45);
+    }
+    .iconBadge img{width:86px;height:86px;border-radius:22px;display:block}
 
-  /* reveal on scroll */
-  .reveal{
-    opacity:0;
-    transform: translateY(14px);
-    transition: opacity .6s ease, transform .6s ease;
-  }
-  .reveal.show{
-    opacity:1;
-    transform: translateY(0);
-  }
+    .phoneDesc{
+      text-align:center;
+      color:rgba(255,255,255,.70);
+      font-size:12px;
+      line-height:1.45;
+      margin:0 10px;
+    }
 
-  @media (max-width:980px){
-    h1{font-size:44px}
-    .heroGrid{grid-template-columns:1fr}
-    .shots{grid-template-columns:repeat(2, minmax(0,1fr))}
-    .cols{grid-template-columns:1fr}
-    .trust{grid-template-columns:1fr}
-  }
-</style>
+    .miniBar{
+      padding:12px;
+      border-radius:16px;
+      background:rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.10);
+    }
+    .miniTop{display:flex;align-items:center;justify-content:space-between;font-size:12px;color:rgba(255,255,255,.84);margin-bottom:8px}
+    .bar{height:10px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.08);overflow:hidden;position:relative}
+    .fill{height:100%;width:62%;background:linear-gradient(90deg, rgba(50,214,255,.85), rgba(255,75,216,.75), rgba(123,92,255,.85));border-radius:999px}
+    .thumb{position:absolute;top:50%;left:62%;transform:translate(-50%,-50%);width:18px;height:18px;border-radius:999px;background:rgba(255,255,255,.92);box-shadow:0 6px 18px rgba(0,0,0,.35)}
+
+    /* sections */
+    .section{margin-top:18px;padding:22px}
+    .sectionTitle{margin:0 0 10px;font-size:18px;letter-spacing:.2px}
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(3, minmax(0,1fr));
+      gap:12px;
+    }
+    .mini{
+      padding:14px;border-radius:16px;
+      background:rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.10);
+      min-height:92px;
+    }
+    .mini h3{margin:0 0 8px;font-size:14px}
+    .mini p{margin:0;color:var(--muted2);font-size:13px;line-height:1.45}
+
+    /* screenshots grid */
+    .screens-grid{
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-top: 14px;
+    }
+    .screens-grid img{
+      width:100%;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.14);
+      box-shadow:0 14px 40px rgba(0,0,0,.35);
+      transition: transform .25s ease;
+      background: rgba(0,0,0,.18);
+    }
+    .screens-grid img:hover{transform: scale(1.02)}
+
+    /* responsible disclosure */
+    .note{
+      margin:0;
+      color:rgba(255,255,255,.78);
+      font-size:14px;
+      line-height:1.65;
+      max-width:80ch;
+    }
+    .list{
+      margin:10px 0 0;
+      padding-left:18px;
+      color:rgba(255,255,255,.78);
+      line-height:1.7;
+      font-size:14px;
+    }
+
+    /* fade-up on scroll */
+    .fadeUp{opacity:0;transform:translateY(14px);transition: opacity .6s ease, transform .6s ease}
+    .fadeUp.show{opacity:1;transform:translateY(0)}
+
+    /* footer */
+    .footer{
+      padding:18px 22px;
+      display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;
+      color:rgba(255,255,255,.62);
+      font-size:12px;
+      border-top:1px solid rgba(255,255,255,.10);
+      border-radius: 0 0 var(--radius) var(--radius);
+    }
+
+    @media (max-width: 980px){
+      .hero{grid-template-columns:1fr}
+      .headline{font-size:40px}
+      .heroRight{min-height:460px}
+      .grid{grid-template-columns:1fr}
+      .phone{width:320px}
+    }
+  </style>
 </head>
 
 <body>
-  <div class="bgPattern" id="bgPattern" aria-hidden="true"></div>
-  <div class="bgOverlay" aria-hidden="true"></div>
-
   <div class="wrap">
-    <div class="nav">
+    <div class="topbar">
       <div class="brand">
-        <img src="assets/icon.png" alt="Neon Bonus Slot icon" />
+        <div class="logo" aria-hidden="true"></div>
         <div>
-          <strong>Neon Bonus Slot</strong>
-          <span>Marketing page</span>
+          <h1>Neon Bonus Slot</h1>
+          <p>Marketing page for App Store review</p>
         </div>
       </div>
-
-      <div class="navLinks">
+      <nav class="nav" aria-label="Site navigation">
         <a href="#screens">Screens</a>
         <a href="#features">Features</a>
-        <a href="#fair">Responsible</a>
+        <a href="#responsible">Responsible</a>
         <a href="#support">Support</a>
         <a href="privacy.html">Privacy</a>
-      </div>
+      </nav>
     </div>
 
-    <section class="hero reveal">
-      <div class="heroIn">
-        <div class="heroGrid">
-          <div>
-            <h1>Neon Bonus Slot</h1>
-            <p class="lead">
-              A colorful fruit slot experience built for entertainment.
-              Fast spins, bright visuals, satisfying win animations, and a simple one-screen flow.
-            </p>
+    <div class="card fadeUp">
+      <div class="hero">
+        <div>
+          <h2 class="headline">Neon fruit slot vibes</h2>
+          <p class="sub">
+            <strong>Neon Bonus Slot</strong> is a free-to-play slot-style entertainment game for adults (<strong>18+</strong>).
+            It does <strong>not</strong> involve real-money gambling, and it has <strong>no in-app purchases</strong> or subscriptions.
+          </p>
 
-            <div class="badges">
-              <span class="badge badgeStrong">Free to play</span>
-              <span class="badge">No real money</span>
-              <span class="badge">No in-app purchases</span>
-              <span class="badge badgeStrong">18+ only</span>
-            </div>
+          <div class="ctaRow">
+            <a class="btn btnPrimary" href="#screens">View screenshots</a>
+            <a class="btn" href="mailto:assistente@lidermaterialdeconstrucaoltda.info">Contact support</a>
+            <a class="btn" href="privacy.html">Privacy Policy</a>
+          </div>
 
-            <div class="trust">
-              <div class="t">
-                <b>Clear for review</b>
-                <span>Support email and Privacy Policy are public and easy to find.</span>
-              </div>
-              <div class="t">
-                <b>No payments</b>
-                <span>No subscriptions, no top-ups, no paid advantages.</span>
-              </div>
-              <div class="t">
-                <b>Entertainment only</b>
-                <span>Virtual outcomes only. No cash-out. No real-world value.</span>
+          <div class="pillRow">
+            <span class="pill">Free to play</span>
+            <span class="pill">No real-money gambling</span>
+            <span class="pill">No in-app purchases</span>
+            <span class="pill">18+ only</span>
+            <span class="pill">No tracking</span>
+          </div>
+
+          <div class="divider"></div>
+
+          <p class="note">
+            This page is provided to make review easier: screenshots, feature summary, support email, and privacy policy are clearly available.
+          </p>
+        </div>
+
+        <div class="heroRight" aria-label="Neon fruit background with phone mockup">
+          <div class="fruit watermelon" aria-hidden="true"></div>
+          <div class="fruit grape" aria-hidden="true"></div>
+          <div class="fruit lemon" aria-hidden="true"></div>
+          <div class="fruit cherry" aria-hidden="true"></div>
+
+          <div class="phoneWrap">
+            <div class="phone">
+              <div class="island" aria-hidden="true"></div>
+              <div class="screen">
+                <div class="screenInner">
+                  <div class="screenHeader">
+                    <span>19:47</span>
+                    <span>98%</span>
+                  </div>
+
+                  <div class="titleInPhone">Neon Bonus Slot</div>
+
+                  <div class="iconBadge">
+                    <img src="icon.png" alt="App icon">
+                  </div>
+
+                  <p class="phoneDesc">
+                    Bright fruit reels, win animations, and simple one-screen flow.
+                    Entertainment only.
+                  </p>
+
+                  <div class="miniBar">
+                    <div class="miniTop"><span>Bet</span><span>10</span></div>
+                    <div class="bar">
+                      <div class="fill"></div>
+                      <div class="thumb"></div>
+                    </div>
+                  </div>
+
+                  <div class="miniBar">
+                    <div class="miniTop"><span>Bonus progress</span><span>18/20</span></div>
+                    <div class="bar">
+                      <div class="fill" style="width:78%"></div>
+                      <div class="thumb" style="left:78%"></div>
+                    </div>
+                  </div>
+
+                  <div class="miniBar">
+                    <div class="miniTop"><span>Balance</span><span>4636</span></div>
+                    <div class="bar">
+                      <div class="fill" style="width:56%"></div>
+                      <div class="thumb" style="left:56%"></div>
+                    </div>
+                  </div>
+
+                </div>
               </div>
             </div>
           </div>
 
-          <div id="screens" class="shots">
-            <div class="shot"><img src="assets/screen1.png" alt="Gameplay screenshot 1" /></div>
-            <div class="shot"><img src="assets/screen2.png" alt="Gameplay screenshot 2" /></div>
-            <div class="shot"><img src="assets/screen3.png" alt="Gameplay screenshot 3" /></div>
-            <div class="shot"><img src="assets/screen4.png" alt="Gameplay screenshot 4" /></div>
+        </div>
+      </div>
+
+      <div id="screens" class="section fadeUp">
+        <h2 class="sectionTitle">Screenshots</h2>
+        <p class="note">If you renamed files, keep the names exactly the same here (case-sensitive).</p>
+
+        <div class="screens-grid">
+          <img src="screen1.jpg" alt="Gameplay screenshot 1">
+          <img src="screen2.jpg" alt="Gameplay screenshot 2">
+          <img src="screen3.jpg" alt="Gameplay screenshot 3">
+          <img src="screen4.jpg" alt="Gameplay screenshot 4">
+        </div>
+      </div>
+
+      <div id="features" class="section fadeUp">
+        <h2 class="sectionTitle">Free features</h2>
+        <div class="grid">
+          <div class="mini">
+            <h3>Fruit reels + neon style</h3>
+            <p>Bright symbols, high contrast UI, designed for quick readability.</p>
+          </div>
+          <div class="mini">
+            <h3>Win animations</h3>
+            <p>Big win / mega win style pop-ups and satisfying transitions.</p>
+          </div>
+          <div class="mini">
+            <h3>Simple single-screen flow</h3>
+            <p>One main screen, quick sessions, no complex menus.</p>
+          </div>
+          <div class="mini">
+            <h3>Sound & vibration toggles</h3>
+            <p>Optional SFX and haptics for a more tactile arcade feel.</p>
+          </div>
+          <div class="mini">
+            <h3>Offline friendly</h3>
+            <p>Designed to be playable without accounts and without purchases.</p>
+          </div>
+          <div class="mini">
+            <h3>No tracking</h3>
+            <p>No third-party analytics or ad tracking required to play.</p>
           </div>
         </div>
       </div>
-    </section>
 
-    <section id="features" class="section reveal">
-      <h2>Free features</h2>
-      <div class="cols">
-        <div class="mini">
-          <b>Fruit reels and neon style</b>
-          <span>Bright symbols, clean contrast, and fast readability in portrait mode.</span>
-        </div>
-        <div class="mini">
-          <b>Win animations</b>
-          <span>Big win screens, spark effects, and satisfying transitions.</span>
-        </div>
-        <div class="mini">
-          <b>Simple single-slot flow</b>
-          <span>One main screen, no complex menus, quick sessions.</span>
-        </div>
-        <div class="mini">
-          <b>Sound and vibration toggles</b>
-          <span>Optional SFX and haptics for a more tactile arcade feel.</span>
-        </div>
-        <div class="mini">
-          <b>Offline friendly</b>
-          <span>Designed to be playable without purchases and without accounts.</span>
-        </div>
-        <div class="mini">
-          <b>No tracking</b>
-          <span>No third-party analytics or ad tracking required to play.</span>
-        </div>
+      <div id="responsible" class="section fadeUp">
+        <h2 class="sectionTitle">Responsible play & disclosures</h2>
+        <p class="note">
+          <strong>18+ only.</strong> This app is intended for adults. It is a free-to-play entertainment game and does not offer real-money gambling.
+          Any virtual currency used in the game has <strong>no real-world value</strong> and cannot be redeemed for money or items of value.
+        </p>
+        <ul class="list">
+          <li><strong>No real-money gambling</strong> (entertainment only, virtual outcomes).</li>
+          <li><strong>No in-app purchases</strong>, subscriptions, or paid content.</li>
+          <li><strong>No cash-out</strong> and no conversion of virtual items to real value.</li>
+          <li><strong>No tracking</strong> and no advertising SDKs required to play.</li>
+        </ul>
       </div>
-    </section>
 
-    <section id="fair" class="section reveal">
-      <h2>Responsible play and disclosures</h2>
-      <p>
-        Neon Bonus Slot is intended for users aged 18 and older. The game does not offer real-money gambling and does not provide any
-        opportunity to win real money or items of real-world value. Any coins, points, or bonuses are virtual and for entertainment only.
-      </p>
-      <ul class="list">
-        <li>No in-app purchases, no subscriptions, no top-ups</li>
-        <li>No cash-out, no payouts, no real-world prizes</li>
-        <li>Success in the game does not imply future success at real-money gambling</li>
-      </ul>
-    </section>
-
-    <section class="section reveal">
-      <h2>FAQ</h2>
-      <p><b>Is this a real-money casino?</b><br><span style="color:rgba(255,255,255,.78)">No. This is a free entertainment game with virtual outcomes only.</span></p>
-      <p><b>Are there purchases or paid advantages?</b><br><span style="color:rgba(255,255,255,.78)">No. The game contains no in-app purchases and no paid progression.</span></p>
-      <p><b>Who is this for?</b><br><span style="color:rgba(255,255,255,.78)">Adults 18+. If you feel the game is not for you, stop at any time.</span></p>
-    </section>
-
-    <section id="support" class="footer reveal">
-      <div>
-        Support email:
-        <a href="mailto:assistente@lidermaterialdeconstrucaoltda.info">assistente@lidermaterialdeconstrucaoltda.info</a>
+      <div id="support" class="section fadeUp">
+        <h2 class="sectionTitle">Support</h2>
+        <p class="note">
+          Support email:
+          <a href="mailto:assistente@lidermaterialdeconstrucaoltda.info">assistente@lidermaterialdeconstrucaoltda.info</a>
+        </p>
+        <div class="divider"></div>
+        <p class="note">
+          Privacy Policy:
+          <a href="privacy.html">Open privacy.html</a>
+        </p>
       </div>
-      <div>
-        <a href="privacy.html">Privacy Policy</a>
-        <span style="opacity:.7"> • </span>
+
+      <div class="footer">
         <span>© <span id="y"></span> Neon Bonus Slot</span>
+        <span>GitHub Pages: <strong>rebbrabb.github.io/neon-bonus-slot/</strong></span>
       </div>
-    </section>
+    </div>
   </div>
 
-<script>
-  // year
-  document.getElementById("y").textContent = new Date().getFullYear();
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
 
-  // reveal
-  const els = document.querySelectorAll(".reveal");
-  const io = new IntersectionObserver((entries)=>{
-    entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add("show"); });
-  }, {threshold: 0.12});
-  els.forEach(el=>io.observe(el));
-
-  // light parallax for fruit pattern
-  const bg = document.getElementById("bgPattern");
-  window.addEventListener("scroll", ()=>{
-    const y = window.scrollY * 0.12;
-    bg.style.transform = `translate3d(0, ${y}px, 0)`;
-  }, {passive:true});
-</script>
+    const els = document.querySelectorAll(".fadeUp");
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting) e.target.classList.add("show");
+      });
+    }, {threshold: 0.12});
+    els.forEach(el=>io.observe(el));
+  </script>
 </body>
 </html>
